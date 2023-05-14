@@ -181,6 +181,7 @@ grid on;
 
 555555555   Num addition folding
 
+
 clc;
 clear all;
 close all;
@@ -212,14 +213,15 @@ for i=1:length(m)
         a=a+1 ;
     end
 end
-subplot(5,1,1);
+figure
+subplot(3,1,1);
 stem(n1,x);
 grid on;
 title('X-Signal');
 xlabel('n');
 ylabel('Amplitude');
 
-subplot(5,1,2);
+subplot(3,1,2);
 stem(n2,y);
 grid on;
 title('Y-Signal');
@@ -227,14 +229,15 @@ xlabel('n');
 ylabel('Amplitude');
 
 y3=y1+y2 ;
-subplot(5,1,3);
+subplot(3,1,3);
 stem(m,y3);
 title('addition of signal');
 xlabel('n---');
 ylabel('amplitude');
 
 %folding operation
-subplot(5,1,4);
+figure
+subplot(2,1,1);
 stem(n3,z);
 grid on;
 title('Z-Signal');
@@ -242,12 +245,14 @@ xlabel('n');
 ylabel('Amplitude');
 
 y4=(-1).*n3 ;
-subplot(5,1,5);
+subplot(2,1,2);
 stem(y4,z);
 title('folding the signal');
 xlabel('n---');
 ylabel('amplitude');
 grid on;
+
+
 
 66666666   Num Multiplication shifting
 
