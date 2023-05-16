@@ -62,24 +62,54 @@ the following sequences, x(n) r (n-S) -3x (n+4)
 
 clc;
 clear all;
-close all;
+%figure(1);
+x = [1 2 3 4 5 6 7 6 5 4 3 2 1];
+n = -2:10;
 
-f=-2:.01:2;
-x=4*sinc(4*f);
-subplot(3,1,1);
-plot(f,real(x));
-title('Real part');
-xlabel('Frequency');
-
-subplot(3,1,2);
-plot(f,abs(x));
-title('Magnitude part');
-xlabel('Frequency');
-
-subplot(3,1,3);
-plot(f,angle(x));
-title('Phase part');
-xlabel('Frequency');
+subplot(4,1,1);
+stem(n,x);
+title('x(n)');
+grid on;
+%figure(2);
+n1 = 3:15;
+%a = n+n1;
+subplot(4,1,2);
+stem(n1,x);
+title('x(n-5)');
+grid on;
+%figure(3);
+n2 = -6:6;
+%b = n-n2;
+subplot(4,1,3);
+stem(n2,x);
+title('x(n+4)');
+grid on;
+m = min(min(n1),min(n2)):max(max(n1),max(n2));
+y1 = [];
+temp = 1;
+for i = 1:length(m);
+    if (m(i)<min(n1)||m(i)>max(n1));
+        y1 = [y1 0];
+    else
+        y1 = [y1 x(temp)];
+        temp = temp+1;
+    end
+end
+y2 = [];
+temp = 1;
+for i = 1:length(m);
+    if (m(i)<min(n2)||m(i)>max(n2));
+        y2 = [y2 0];
+    else
+        y2 = [y2 x(temp)];
+        temp = temp+1;
+    end
+end
+y = (2.*y1)-(3.*y2);
+subplot(4,1,4);
+stem(m,y);
+title('x1(n)=2x(n-5)-3x(n+4)');
+grid on;
 
 
 
